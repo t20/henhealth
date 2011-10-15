@@ -26,6 +26,13 @@ def regsiter():
     pass
 
 
+@app.route('/test')
+def testbydt():
+    """test ..."""
+    pass
+
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run()
