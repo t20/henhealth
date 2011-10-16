@@ -32,7 +32,7 @@ class Patient(object):
 	id = Column(Integer, primary_key=True)
     first_name = Column(String(50), nullable=False)
 	last_name = Column(String(50), nullable=False)
-	gender = Column(boolean, nullable=False)
+	gender = Column(Boolean, nullable=False)
 	birthday = Column(DateTime)
 	address = Column(String(50), nullable=False)
 	city = Column(String(50), nullable=False)
@@ -94,6 +94,11 @@ class Appointments(object):
 	appointment_time = Column(DateTime)
 	address = Column(String(200), nullable=False)
 
+class Question(object):
+	__tablename__ = 'questions'
+	id = Column(Integer, primary_key=True)
+	question_text = Column(Text, nullable=False)
+
 class PatientDischargeChecklist(object):
 	__tablename__ = 'patient_discharge_checklists'
     
@@ -108,7 +113,12 @@ class DischargeChecklist(object):
 	provider_id = Column(Integer, ForeignKey('providers.id'))
 	date = Column(DateTime)
 	
-	# What's Ahead
+	question_id = Column(Integer, ForeignKey('questions.id'))
+	question_asked = Column(Boolean, nullable=False))
+	question_notes = Column(Text)
+	
+	
+"""	# What's Ahead
 	care_after_discharge = Column(String(255), nullable=False)
 	caregiver_id = Column(Integer, ForeignKey('caregivers.id')) #family care
 	
@@ -131,7 +141,7 @@ class DischargeChecklist(object):
 	caregiver_questions = Column(String(255), nullable=True)
 	provider_concerns = Column(String(255), nullable=True)
 	special_instructions = Column(String(255), nullable=True)
-	
+""""	
 	
 
 class Medication(object):
