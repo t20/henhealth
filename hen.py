@@ -58,8 +58,6 @@ def dashboard():
                 caregivers=get_caregivers_with_access(user_id)
                 )
 
-####HELPER METHODS
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -83,20 +81,43 @@ def forgot():
 
 
 @app.route('/account')
+@login_required
 def account():
     """docstring"""
     return render_template('account.html')
 
 
 @app.route('/patient_dashboard')
+@login_required
 def patient_dashboard():
     """docstring"""
     return render_template('patient_dashboard.html')
 
-@app.route('/checklist_show')
+
+@app.route('/checklist/<checklist_id>')
+@login_required
 def checklist_show():
-    """docstring"""
-    return render_template('checklist_show.html')
+    checklist = db_session.query(DischargeChecklist). \
+                filter_by(id=checklist_id).first()
+    return render_template('checklist_show.html', checklist=checklist, edit=False)
+
+
+@app.route('/checklist/edit/<checklist_id>')
+@login_required
+def checklist_edit():
+    checklist = db_session.query(DischargeChecklist). \
+                filter_by(id=checklist_id).first()
+    return render_template('checklist_form.html', checklist=checklist, edit=True)
+
+
+@app.route('/checklist/new')
+@login_required
+def checklist_new():
+    checklist = DischargeChecklist()
+    user_id = session.get('user_id')
+    return render_template('checklist_form', checklist=checklist, user_id=user_id)
+
+####HELPER METHODS
 
 def get_appointments(patient_id, provider_id):
     appointment = db_session.query(Appointment). \
