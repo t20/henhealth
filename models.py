@@ -131,6 +131,11 @@ class DischargeChecklist(Base):
     provider_id = Column(Integer, ForeignKey('providers.id'))
     date = Column(DateTime)
 
+    def __init__(self, patient_id=None, provider_id=None, date=None):
+        self.patient_id = patient_id
+        self.provider_id = provider_id
+        self.date = date
+
 class DischargeChecklistResponse(Base):
     __tablename__ = 'discharge_checklists_response'
     id = Column(Integer, primary_key=True)
@@ -179,6 +184,10 @@ class Medication(Base):
     id = Column(Integer, primary_key=True)
     patient_id = Column(Integer, ForeignKey('patients.id'))
     medicine_id = Column(Integer, ForeignKey('patients.id'))
+    
+    def __init__(self, patient_id=None, medicine_id=None):
+        self.patient_id = patient_id
+        self.medicine_id = medicine_id
 
 class Viewer(Base):
     __tablename__ = 'viewers'
@@ -187,3 +196,8 @@ class Viewer(Base):
     patient_id = Column(Integer, ForeignKey('patients.id'))
     provider_id = Column(Integer, ForeignKey('providers.id'))
     caregiver_id = Column(Integer, ForeignKey('caregivers.id'))
+
+    def __init__(self, patient_id=None, provider_id=None, caregiver_id=None):
+        self.patient_id = patient_id
+        self.provider_id = provider_id
+        self.caregiver_id = caregiver_id
