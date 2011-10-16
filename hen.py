@@ -76,6 +76,12 @@ def give_access(patient_id, caregiver_id=None, provider_id=None, commit=False):
     if commit:
         db_session.commit()
 
+def revoke_access():
+    access = db_session.query(Viewer). \
+        filter_by(patient_id=patient_id, provider_id=provider_id). \
+        all()
+    session.delete(access)
+
 def get_discharge_checklist(discharge_checklist_id):
     """docstring for get_discharge_checklist"""
     dc = db_session.query(DischargeChecklist). \
