@@ -92,7 +92,7 @@ class Medication(Base):
     when_to_take_it = Column(String(100), nullable=False)
     notes = Column(Text)
     
-    def __init__(self, drug_name=None, what_it_does=None, dose=None, how_to_take_it=None, when_to_take_it, notes):
+    def __init__(self, drug_name=None, what_it_does=None, dose=None, how_to_take_it=None, when_to_take_it=None, notes=None):
         self.drug_name = drug_name
         self.what_it_does = what_it_does
         self.dose = dose
