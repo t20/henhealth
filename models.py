@@ -103,8 +103,36 @@ class PatientDischargeChecklist(object):
 
 class DischargeChecklist(object):
     __tablename__ = 'discharge_checklists'
-    #TODO Complete, remmeber to add date
-
+	id = Column(Integer, primary_key=True)
+	patient_id = Column(Integer, ForeignKey('patients.id'))
+	provider_id = Column(Integer, ForeignKey('providers.id'))
+	date = Column(DateTime)
+	
+	# What's Ahead
+	care_after_discharge = Column(String(255), nullable=False)
+	caregiver_id = Column(Integer, ForeignKey('caregivers.id')) #family care
+	
+	# Your Condition
+	health_condition = Column(String(255), nullable=False)
+	improvement_options = Column(String(255), nullable=False)
+	problems_to_watch_out_for = Column(String(255), nullable=True)
+	medication_id = Column(Integer, ForeignKey('medications.id'))
+	
+	# Recovery and Support
+	medical_equipment_needs = Column(String(255), nullable=True)
+	activity_help_needed = Column(String(255), nullable=True)
+	task_help_needed = Column(String(255), nullable=True)
+	social_group_info = Column(String(255), nullable=True)
+	insurance_info_needs = Column(String(255), nullable=True)
+	written_discharge_instructions = Column(String(255), nullable=True)
+	appointment_id = Column(Integer, ForeignKey('appointments.id'))
+	
+	# Caregiver
+	caregiver_questions = Column(String(255), nullable=True)
+	provider_concerns = Column(String(255), nullable=True)
+	special_instructions = Column(String(255), nullable=True)
+	
+	
 
 class Medication(object):
 	__tablename__ = 'medications'
@@ -113,7 +141,7 @@ class Medication(object):
 	medicine_id = Column(Integer, ForeignKey('patients.id'))
 
 class Viewer(object):
-	__tablename__ = 'medications'
+	__tablename__ = 'viewers'
     
 	id = Column(Integer, primary_key=True)
 	patient_id = Column(Integer, ForeignKey('patients.id'))
