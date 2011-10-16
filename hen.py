@@ -4,8 +4,10 @@ app = Flask(__name__)
 
 from database import db_session
 from flask import render_template, request, session, redirect, url_for, flash
+from functools import wraps
 from models import *
 
+#######ROUTING METHODS
 
 @app.route('/')
 def index():
@@ -33,6 +35,33 @@ def forgot():
 def account():
     """docstring"""
     return render_template('account.html')
+
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+        return redirect(url_for('login'))
+    return render_template('dashboard.html', 
+                medications=get_medication(user_id),
+                pdcs = get_discharge_checklists(user_id),
+                appointment=get_appointments(user_id),
+                providers=get_providers_with_access(user_id),
+                caregivers=get_caregivers_with_access(user_id)
+                )
+
+
+######DECORATORS
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        user_id = session.get('user_id')
+        if not user_id:
+            return redirect(url_for('login', next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+####HELPER METHODS
 
 def get_appointments(patient_id, provider_id):
     appointment = db_session.query(Appointment). \
@@ -97,6 +126,7 @@ def add_question(patient_id, question_id, question_asked, question_notes, commit
     discharge_checklists = db_session.query(DischargeForm). \
                         filter_by(patient_id=patient_id).all()
     return discharge_checklists
+
 
 if __name__ == '__main__':
     app.debug = True
