@@ -5,12 +5,20 @@
 {% block body %}
 
 <div class="inner_section">
-  <h2>Register</h2>
-  <form action="login" method="POST" accept-charset="utf-8">
-    <label for="username">Username</label><input type="text" name="username" value="" id="username"/>
-    <label for="password">Password</label><input type="password" name="password" value="" id="password"/>
-    <p><input type="submit" value="Login"></p>
-  </form>
+    <div class="row show-grid" title="Default three column layout">
+        <div class="span-one-third offset-one-third">
+            <h2>Register</h2>
+            <form action="login" method="POST" accept-charset="utf-8">
+                <label for="username">Username</label><input type="text" name="username" value="" id="username"/>
+                <label for="password">Password</label><input type="password" name="password" value="" id="password"/>
+                <p><input type="submit" value="Login"></p>
+              </form>
+        </div>
+        <div class="span-one-third">&nbsp;</div>
+
+      </div>
+  
+  
 </div>
 
 {% endblock %}
