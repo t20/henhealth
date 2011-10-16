@@ -7,6 +7,16 @@ from flask import render_template, request, session, redirect, url_for, flash
 from functools import wraps
 from models import *
 
+######DECORATORS
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        user_id = session.get('user_id')
+        if not user_id:
+            return redirect(url_for('login', next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
+
 #######ROUTING METHODS
 
 @app.route('/')
@@ -47,17 +57,6 @@ def dashboard():
                 providers=get_providers_with_access(user_id),
                 caregivers=get_caregivers_with_access(user_id)
                 )
-
-######DECORATORS
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        user_id = session.get('user_id')
-        if not user_id:
-            return redirect(url_for('login', next=request.url))
-        return f(*args, **kwargs)
-    return decorated_function
-
 
 ####HELPER METHODS
 
