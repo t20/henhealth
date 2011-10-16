@@ -86,30 +86,35 @@ class Medicine(object):
 
 class Appointments(object):
 	__tablename__ = 'appointments'
-
+    
 	id = Column(Integer, primary_key=True)
 	patient_id = Column(Integer, ForeignKey('patients.id'))
 	provider_id = Column(Integer, ForeignKey('providers.id'))
 	appointment_date = Column(DateTime)
 	appointment_time = Column(DateTime)
 	address = Column(String(200), nullable=False)
-	
-class DischargeForm(object):
-	__tablename__ = 'discharge_form'
 
+class PatientDischargeChecklist(object):
+	__tablename__ = 'patient_discharge_checklists'
+    
 	id = Column(Integer, primary_key=True)
 	patient_id = Column(Integer, ForeignKey('patients.id'))
-	provider_id = Column(Integer, ForeignKey('providers.id'))
+	discharge_checklist = Column(Integer, ForeignKey('discharge_checklists.id'))
+
+class DischargeChecklist(object):
+    __tablename__ = 'discharge_checklists'
+    #TODO Complete, remmeber to add date
+
 
 class Medication(object):
 	__tablename__ = 'medications'
 	id = Column(Integer, primary_key=True)
 	patient_id = Column(Integer, ForeignKey('patients.id'))
 	medicine_id = Column(Integer, ForeignKey('patients.id'))
-	
+
 class Viewer(object):
 	__tablename__ = 'medications'
-
+    
 	id = Column(Integer, primary_key=True)
 	patient_id = Column(Integer, ForeignKey('patients.id'))
 	provider_id = Column(Integer, ForeignKey('providers.id'))
