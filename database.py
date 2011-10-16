@@ -3,7 +3,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 # engine = create_engine('mysql://' + app.config['DB_USERNAME'] + ':' + app.config['DB_PASSWORD'] + '@' + app.config['DB_HOST'] + '/' + app.config['DB_DATABASE'], convert_unicode=True)
-engine = create_engine('mysql://barath:barath123@localhost/askfrnds', convert_unicode=True)
+engine = create_engine('sqlite:///db/hen.db', convert_unicode=True)
 
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,

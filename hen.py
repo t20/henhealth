@@ -94,6 +94,9 @@ def add_question(patient_id, question_id, question_asked, question_notes, commit
     db_session.add(discharge_response)
     if commit:
         db_session.commit()
+    discharge_checklists = db_session.query(DischargeForm). \
+                        filter_by(patient_id=patient_id).all()
+    return discharge_checklists
 
 if __name__ == '__main__':
     app.debug = True
