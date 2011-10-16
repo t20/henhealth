@@ -80,20 +80,25 @@ class Caregiver(Base):
     created = Column(DateTime)
     modified = Column(DateTime)
 
-class Medicine(Base):
-    __tablename__ = 'medicine'
+class Medication(Base):
+    __tablename__ = 'medications'
     
     id = Column(Integer, primary_key=True)
-    medicine_name = Column(String(50), nullable=False)
-    usage = Column(String(50), nullable=False)
-    side_effects = Column(Text, nullable=False)
-    comments = Column(Text)
+    discharge_checklist_id = Column(Integer, ForeignKey('discharge_checklists.id'))
+    drug_name = Column(String(50), nullable=False)
+    what_it_does = Column(String(100), nullable=False)
+    dose = Column(String(100), nullable=False)
+    how_to_take_it = Column(String(100), nullable=False)
+    when_to_take_it = Column(String(100), nullable=False)
+    notes = Column(Text)
     
-    def __init__(self, medicine_name=None, usage=None, side_effects=None, comments=None):
-        self.medicine_name = medicine_name
-        self.usage = usage
-        self.side_effects = side_effects
-        self.comments = comments
+    def __init__(self, drug_name=None, what_it_does=None, dose=None, how_to_take_it=None, when_to_take_it, notes):
+        self.drug_name = drug_name
+        self.what_it_does = what_it_does
+        self.dose = dose
+        self.how_to_take_it = how_to_take_it
+        self.when_to_take_it = when_to_take_it
+        self.notes = notes
         
 class Appointments(Base):
     __tablename__ = 'appointments'
@@ -122,7 +127,7 @@ class PatientDischargeChecklist(Base):
     
     id = Column(Integer, primary_key=True)
     patient_id = Column(Integer, ForeignKey('patients.id'))
-    discharge_checklist = Column(Integer, ForeignKey('discharge_checklists.id'))
+    discharge_checklist_id = Column(Integer, ForeignKey('discharge_checklists.id'))
 
 class DischargeChecklist(Base):
     __tablename__ = 'discharge_checklists'
@@ -130,7 +135,7 @@ class DischargeChecklist(Base):
     patient_id = Column(Integer, ForeignKey('patients.id'))
     provider_id = Column(Integer, ForeignKey('providers.id'))
     date = Column(DateTime)
-
+    
     def __init__(self, patient_id=None, provider_id=None, date=None):
         self.patient_id = patient_id
         self.provider_id = provider_id
@@ -178,16 +183,6 @@ class DischargeChecklistResponseMapping(Base):
     provider_concerns = Column(String(255), nullable=True)
     special_instructions = Column(String(255), nullable=True)
 """
-
-class Medication(Base):
-    __tablename__ = 'medications'
-    id = Column(Integer, primary_key=True)
-    patient_id = Column(Integer, ForeignKey('patients.id'))
-    medicine_id = Column(Integer, ForeignKey('patients.id'))
-    
-    def __init__(self, patient_id=None, medicine_id=None):
-        self.patient_id = patient_id
-        self.medicine_id = medicine_id
 
 class Viewer(Base):
     __tablename__ = 'viewers'
