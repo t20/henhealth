@@ -35,27 +35,53 @@ def account():
     return render_template('account.html')
 
 def get_appointments(patient_id, provider_id):
-    appointments = db_session.query(Appointment). \
+    appointment = db_session.query(Appointment). \
                         filter_by(patient_id=patient_id). \
                         filter_by(provider_id=provider_id). \
-                        order_by(Appointment.appointment_date.desc()).all()
-    return appointments
+                        order_by(Appointment.appointment_date.desc()).first()
+    return appointment
 
 def get_medication(patient_id):
     """docstring for get_medication"""
     medications = db_session.query(Medication). \
                         filter_by(patient_id=patient_id). \
+                        all()
     return medications
 
 def get_discharge_checklists(patient_id):
     """docstring for get_discharge_form"""
-    discharge_checklists = db_session.query(DischargeForm). \
+    pdcs = db_session.query(PatientDischargeChecklist). \
                         filter_by(patient_id=patient_id). \
-    return discharge_checklists
+                        all()
+    return pdcs
 
-def get_users(user_id):
-    
+def get_providers_with_access(patient_id):
+    #TODO - Chnage model name
+    providers = db_session.query(Viewer). \
+                filter_by(patient_id=patient_id). \
+                filter_by(provider_id != None). \
+                all()
+    return providers
 
+def get_caregivers_with_access(patient_id):
+    #TODO - Chnage model name
+    caregivers = db_session.query(Viewer). \
+                filter_by(patient_id=patient_id). \
+                filter_by(caregiver_id != None).all()
+    return caregivers
+
+def give_access(patient_id, caregiver_id=None, provider_id=None, commit=False):
+    v = Viewer(patient_id, caregiver_id=caregiver_id, provider_id=provider_id)
+    db_session.add(v)
+    if commit:
+        db_session.commit()
+
+def get_discharge_checklist(discharge_checklist_id):
+    """docstring for get_discharge_checklist"""
+    dc = db_session.query(DischargeChecklist). \
+                filter_by(id=discharge_checklist_id). \
+                first()
+    return dc
 
 if __name__ == '__main__':
     app.debug = True
