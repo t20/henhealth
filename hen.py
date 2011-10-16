@@ -1,36 +1,33 @@
-from flask import Flask
+from flask import Flask, request, render_template, redirect
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Index Page!"
+    return render_template('index.html')
 
-@app.route('/hello')
-def hello_world():
-    return "Hello World!"
-
-@app.route('/user/<username>')
-def show_user_profile(username):
-    # show the user profile for that user
-    return "User page"
-
-@app.route('/')
+@app.route('/login')
 def login():
     """docstring for login"""
-    pass
+    return render_template('login.html')
 
 
-@app.route('/')
+@app.route('/register')
 def regsiter():
     """docstring for regsiter"""
-    pass
+    return render_template('register.html')
 
 
-@app.route('/test')
-def testbydt():
-    """test ..."""
-    pass
+@app.route('/forgot')
+def forgot():
+    """docstring"""
+    return render_template('forgot.html')
 
+
+@app.route('/account')
+def account():
+    """docstring"""
+    return render_template('account.html')
 
 
 if __name__ == '__main__':
