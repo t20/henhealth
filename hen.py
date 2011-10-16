@@ -26,8 +26,22 @@ def index():
 @app.route('/login')
 def login():
     """docstring for login"""
+    if request.method == 'POST':
+        username = request.form['username']
+        if username == 'patient':
+            session['user_id'] = 1
+            return render_template('patient_dashboard.html')
+        if username == 'provider':
+            session['user_id'] = 2
+            return render_template('provider_dashboard.html')
     return render_template('login.html')
 
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    flash('You were logged out')
+    return redirect(url_for('login'))
 
 @app.route('/register')
 def regsiter():
