@@ -1,3 +1,116 @@
 <div id="discharge_show_wrapper">
+    <div class="large_input">
+      <p>Patient Name:{{ patient_name }}</p>
+      <p>Reason For Admission:{{ reason_for_admission }}</p>
+    </div>
   
+    <p class="instructions">
+      During your stay, your doctor and the staff will work with you to plan for your discharge. You and your caregiver are important members of the planning team. A caregiver is a family member or friend who may be helping you after discharge. Below is a checklist of important things you and your caregiver should know to prepare for discharge.
+    </p>
+  
+    <div id="instructions_wrapper">
+      <h3>Instructions</h3>
+      <ul>
+        <li class="instruction_item">Use the checklist early and often during your stay.</li>
+        <li class="instruction_item">Talk to your doctor and the staff (for example, a discharge planner, social worker, or nurse) about the items on the checklist.</li>
+        <li class="instruction_item" style="color:red;">Check the box next to each item when you and your caregiver complete it.</li>
+        <li class="instruction_item">Use the notes column to write down important information like names and phone numbers.</li>
+        <li class="instruction_item">Skip any items that don’t apply to you.</li>
+      </ul>
+    </div>
+
+    <div id="action_items_wrapper">
+      <table border="1" cellspacing="5" cellpadding="5">
+        <tr>
+          <td></td>
+          <td>Action Items</td>
+          <td>Notes</td>
+        </tr>
+        {% for question in questions %}
+          <tr>
+            <td><input type="checkbox" name="question_{{ question.id }}" value="" id="question_{{ question.id }}" {% if question.checked %} checked="checked"{% endif %}/></td>
+            <td><p>{{ question.question_text }}</p></td>
+            <td><textarea>{{question.question_notes}}</textarea></td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  
+    <div class="instructions">
+      <p>If you need help choosing a home health agency or a nursing home, talk to the staff. Visit www.medicare.gov to compare the quality of nursing homes, home health agencies, dialysis facilities, and hospitals in your area. You can also call 1-800-MEDICARE (1-800-633-4227). TTY users should call 1-877-486-2048.</p>
+    </div>
+  
+    <div class="instructions">
+      <p>Medicare Discharge Appeal Rights: If you have Medicare and feel you’re being asked to leave a hospital or other health care setting too soon, you may have the right to ask for a review of the discharge decision by an independent reviewer called a Quality Improvement Organization (QIO) before you leave. The QIO can explain your appeal rights. To get the number for the QIO in your state, call 1-800-MEDICARE.</p>
+    </div>
+  
+    <div class="instructions">
+       <p>*This publication isn’t a legal document. The official Medicare Program legal guidance is contained in the relevant statutes, regulations, and rulings. The information in this publication was correct when it was printed. Call 1-800-MEDICARE, or visit www.medicare.gov to get the most current information.</p>
+    </div>
+  
+    <div id="drug_list_wrapper">
+        <table width="960" border="1">
+              <tbody><tr>
+                <td width="172"><span class="style3" rip-style-bordercolor-backup="" style="" rip-style-borderstyle-backup="" rip-style-borderwidth-backup="">DRUG NAME</span></td>
+                <td width="159"><span class="style3">WHAT IT DOES</span></td>
+                <td width="68"><span class="style3">DOSE</span></td>
+                <td width="175"><span class="style3">HOW TO TAKE IT</span></td>
+                <td width="168"><span class="style3">WHEN TO TAKE IT</span></td>
+                <td width="178"><span class="style3">NOTES</span></td>
+              </tr>
+              Add range(1 to 5) and duplicate the data
+              {% for drug_list in drug_lists %}
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody></table>
+      {% endfor %}
+    </div>
+  
+    <div id="appointment_wrapper">
+      <table width="960" border="0">
+        <tr>
+          <td bgcolor="#29b5cc"><span class="style10"><strong>My Appointments:</strong><br>
+          </span></td>
+        </tr>
+        <tr>
+            <td width="368"><div align="center"><span class="style17">APPOINTMENTS AND TESTS</span></div></td>
+            <td width="278"><div align="center"><span class="style17">DATE</span></div></td>
+            <td width="292"><div align="center"><span class="style17">PHONE NUMBER</span></div></td>
+        </tr>
+        Cheat and duplicate here.
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        </table>
+    </div>
+  
+    <div class="instructions">
+      <p>The agencies listed here have information on community services, like home-delivered meals and rides to appointments. You can also get help making long-term care decisions. Ask a social worker in your health care setting for more information on community services and support.</p>
+
+      <p>Area Agencies on Aging (AAAs): Help adults age 60 and older and their caregivers. To find the AAA in your area, call The Eldercare Locator at 1-800-677-1116 weekdays from 9:00 a.m. to 8:00 p.m. (EST), or visit www.eldercare.gov.</p>
+
+      <p>Long-Term Care (LTC) Ombudsman Program: Advocate for, and promote the rights of, residents in LTC facilities. Visit www.Ltcombudsman.org.</p>
+
+      <p>Aging and Disability Resource Centers (ADRCs): Offer resources to help people of all incomes and ages stay independent. Visit www.adrc-tae.org.</p>
+    
+      <p>Centers for Independent Living (CILs): Help people with disabilities live independently. www.ilru.org/html/publications/directory/index.html.</p>
+    
+      <p>State Technology Assistance Project: Has information on medical equipment and other assistive technology. Call 1-703-524-6686 to get the contact information for you state or visit www.resna.org.</p>
+    
+      <p>National Long-Term Care Clearninghouse: Provides information and resources to plan for your long-term care needs. Visit www.longtermcare.gov.</p>
+    
+      <p>National Council on Aging: Provides information about programs that help pay for prescription drugs, utility bills, meals, health care, and more. Visit www.benefitscheckup.org.</p>
+    
+      <p>State Health Insurance Assistance Programs (SHIP): Offer counseling on health insurance and programs for people with limited income. Also help with claims, billing, and appeals. Visit www.medicare.gov/contacts/Default.aspx, or call 1-800-486-2048.</p>
+    
+      <p>State Medical Assistance (Medicaid) office: Provides information about Medicaid. To find your local office, call 1-800-MEDICARE and say, "Medicaid." You can also visit www.medicare.gov.</p>
+    </div>
 </div>
