@@ -23,7 +23,7 @@ def login_required(f):
 def index():
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     """docstring for login"""
     if request.method == 'POST':
@@ -43,9 +43,9 @@ def logout():
     flash('You were logged out')
     return redirect(url_for('login'))
 
+
 @app.route('/register')
-def regsiter():
-    """docstring for regsiter"""
+def register():
     return render_template('register.html')
 
 
@@ -81,6 +81,10 @@ def login():
     """docstring for login"""
     return render_template('login.html')
 
+@app.route('/pdc_checklist')
+def pdc_checklist():
+    """docstring for pdc_checklist"""
+    return render_template('pdc_checklist.html')
 
 @app.route('/register')
 def regsiter():
