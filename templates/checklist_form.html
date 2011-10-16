@@ -59,14 +59,16 @@
               <td width="178"><span class="style3">NOTES</span></td>
             </tr>
             Add range(1 to 5) and duplicate the data
-            {% for i in  in 12345|make_list %}
+            {% for count in  in 12345|make_list %}
               <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td><input type="text" name="drug_name_{{count}}" value="" id="drug_name_{{count}}"/>
+                </td>
+                <td><input type="text" name="what_it_does_{{count}}" value="" id="what_it_does_{{count}}"/>
+                </td>
+                <td><input type="text" name="does_{{count}}" value="" id="does_{{count}}"/></td>
+                <td><input type="how_to_take_it" name="how_to_take_it_{{count}}" value="" id="how_to_take_it_{{count}}"/></td>
+                <td><input type="when_to_take_it" name="when_to_take_it_{{count}}" value="" id="when_to_take_it_{{count}}"/></td>
+                <td><input type="text" name="comment_{{count}}" value="" id="comment_{{count}}"/></td>
               </tr>
             {% endfor %}
       </table>
