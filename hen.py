@@ -83,6 +83,12 @@ def get_discharge_checklist(discharge_checklist_id):
                 first()
     return dc
 
+def add_question(patient_id, question_id, question_asked, question_notes, commit=False):
+    discharge_response = DischargeResponse(patient_id, question_id, question_asked, question_notes)
+    db_session.add(discharge_response)
+    if commit:
+        db_session.commit()
+
 if __name__ == '__main__':
     app.debug = True
     app.run()
