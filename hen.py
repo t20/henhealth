@@ -81,6 +81,10 @@ def login():
     """docstring for login"""
     return render_template('login.html')
 
+@app.route('/pdc_checklist')
+def pdc_checklist():
+    """docstring for pdc_checklist"""
+    return render_template('pdc_checklist.html')
 
 @app.route('/register')
 def regsiter():
