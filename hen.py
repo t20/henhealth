@@ -7,6 +7,9 @@ from flask import render_template, request, session, redirect, url_for, flash
 from functools import wraps
 from models import *
 
+app.config.from_object('config')
+app.secret_key = app.config['APP_SECRET_KEY']
+
 ######DECORATORS
 def login_required(f):
     @wraps(f)
@@ -19,10 +22,6 @@ def login_required(f):
 
 #######ROUTING METHODS
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """docstring for login"""
@@ -30,10 +29,10 @@ def login():
         username = request.form['username']
         if username == 'patient':
             session['user_id'] = 1
-            return render_template('patient_dashboard.html')
+            return redirect(url_for('dashboard'))
         if username == 'provider':
             session['user_id'] = 2
-            return render_template('provider_dashboard.html')
+            return redirect(url_for('provider_dashboard'))
     return render_template('login.html')
 
 
@@ -72,14 +71,13 @@ def dashboard():
                 caregivers=get_caregivers_with_access(user_id)
                 )
 
+@app.route('/provider/dashboard')
+def provider_dashboard():
+    return render_template('provider_dashboard.html')
+
 @app.route('/')
 def index():
     return render_template('index.html')
-
-@app.route('/login')
-def login():
-    """docstring for login"""
-    return render_template('login.html')
 
 @app.route('/pdc_checklist')
 def pdc_checklist():
