@@ -60,6 +60,33 @@ def dashboard():
 
 ####HELPER METHODS
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/login')
+def login():
+    """docstring for login"""
+    return render_template('login.html')
+
+
+@app.route('/register')
+def regsiter():
+    """docstring for regsiter"""
+    return render_template('register.html')
+
+
+@app.route('/forgot')
+def forgot():
+    """docstring"""
+    return render_template('forgot.html')
+
+
+@app.route('/account')
+def account():
+    """docstring"""
+    return render_template('account.html')
+
 def get_appointments(patient_id, provider_id):
     appointment = db_session.query(Appointment). \
                         filter_by(patient_id=patient_id). \
@@ -123,7 +150,6 @@ def add_question(patient_id, question_id, question_asked, question_notes, commit
     discharge_checklists = db_session.query(DischargeForm). \
                         filter_by(patient_id=patient_id).all()
     return discharge_checklists
-
 
 if __name__ == '__main__':
     app.debug = True
