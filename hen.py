@@ -40,7 +40,6 @@ def account():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-        return redirect(url_for('login'))
     return render_template('dashboard.html', 
                 medications=get_medication(user_id),
                 pdcs = get_discharge_checklists(user_id),
@@ -48,7 +47,6 @@ def dashboard():
                 providers=get_providers_with_access(user_id),
                 caregivers=get_caregivers_with_access(user_id)
                 )
-
 
 ######DECORATORS
 def login_required(f):
