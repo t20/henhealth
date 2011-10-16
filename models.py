@@ -100,7 +100,7 @@ class Medication(Base):
         self.when_to_take_it = when_to_take_it
         self.notes = notes
         
-class Appointments(Base):
+class Appointment(Base):
     __tablename__ = 'appointments'
     
     id = Column(Integer, primary_key=True)
