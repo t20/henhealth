@@ -87,7 +87,7 @@ class Medicine(Base):
     medicine_name = Column(String(50), nullable=False)
     usage = Column(String(50), nullable=False)
     side_effects = Column(Text, nullable=False)
-    comments = Column(Text, nullable=False)
+    comments = Column(Text)
     
     def __init__(self, medicine_name=None, usage=None, side_effects=None, comments=None):
         self.medicine_name = medicine_name
@@ -103,7 +103,7 @@ class Appointments(Base):
     provider_id = Column(Integer, ForeignKey('providers.id'))
     appointment_date = Column(DateTime)
     appointment_time = Column(DateTime)
-    address = Column(String(200), nullable=False)
+    address = Column(String(200))
 
     def __init__(self, patient_id=None, provider_id=None, appointment_date=None, appointment_time=None, address=None):
         self.patient_id = patient_id
