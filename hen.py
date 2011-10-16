@@ -87,6 +87,17 @@ def account():
     """docstring"""
     return render_template('account.html')
 
+
+@app.route('/patient_dashboard')
+def patient_dashboard():
+    """docstring"""
+    return render_template('patient_dashboard.html')
+
+@app.route('/checklist_show')
+def checklist_show():
+    """docstring"""
+    return render_template('checklist_show.html')
+
 def get_appointments(patient_id, provider_id):
     appointment = db_session.query(Appointment). \
                         filter_by(patient_id=patient_id). \
