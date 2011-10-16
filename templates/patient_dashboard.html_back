@@ -21,69 +21,18 @@
   <div class="span8">
      <div class="mini-layout">
         <div class="mini-layout-header">Medication</div>
-
-<table id="medication">
-    <thead>
-<tr>
-<th>Drug Name</th>
-<th>Dose</th>
-<th>When to take it</th>
-</tr>
-</thead>
-<tr>
-    <td>Prozac</td>
-    <td>2 pills</td>
-    <td>3 times a day</td>
-</tr>
-<tr>
-    <td>Flonase</td>
-    <td>1 pill</td>
-    <td>ever morning</td>
-</tr>
-<tr>
-    <td>Lanoxin</td>
-    <td>1 pill</td>
-    <td>ever morning</td>
-</tr>
-<tr>
-    <td>Humulinin N</td>
-    <td>2 pills</td>
-    <td>ever morning &amp; eveving</td>
-</tr>
-<tr>
-    <td>Abilify </td>
-    <td>2 pills</td>
-    <td>ever other hour</td>
-</tr>
-
-
-</table>
-
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <br/>
         <br/>
       </div>
 
      <div class="mini-layout">
         <div class="mini-layout-header">Next Appointment</div>
-
-<table id="medication">
-    <thead>
-<tr>
-<th>Date</th>
-<th>Time</th>
-<th>Location</th>
-</tr>
-</thead>
-<tr>
-    <td><h3>12/11/2011</h3></td>
-    <td><h3>10:00 AM</h3></td>
-    <td><address><strong>1257 La Jolla Dr.<br/> San Diego, CA 92037</strong></address></td>
-</tr>
-
-
-
-</table>
-
+        <br/>
         <br/>
         <br/>
         <br/>
@@ -124,6 +73,8 @@
 <td>La Jolla Hospital </td>
 <td align="center"><a href=""><span class="action">see form</span></a></td>
 </tr>
+
+
 <tr>
 <td>08/03/2011</td>
 <td>Olive Branch Assisted </td>
