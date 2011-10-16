@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <div class="inner_section">
+    <h2>Account Information</h2>
+    <form action="/account" method="POST" accept-charset="utf-8">
+      <label for="first_name">First Name</label><input type="text" name="first_name" value="" id="first_name"/>
+      <label for="last_name">Last Name</label><input type="text/submit/hidden/button" name="last_name" value="" id="last_name"/>
+      <p><input type="submit" value="Update"></p>
+    </form>
+  </div>
+
+  <div class="inner_section">
+    <h2>Change Password</h2>
+    <form action="change_password" method="POST" accept-charset="utf-8">
+      <label for="password">Password</label><input type="password" name="password" value="" id="password"/>
+      <label for="repeat_password">Repeat Password</label><input type="password" name="repeat_password" value="" id="repeat_password"/
+      <p><input type="submit" value="Change Password"></p>
+    </form>
+  </div>
+
+{% endblock %}

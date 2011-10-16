@@ -1,1 +1,17 @@
 {% extends "base.html" %}
+
+<div class="inner_section">
+  <h2>Register</h2>
+  <form action="register" method="POST" accept-charset="utf-8">
+    <label for="first_name">First Name</label><input type="text" name="first_name" value="" id="first_name"/>
+    <label for="last_name">Last Name</label><input type="text" name="last_name" value="" id="last_name"/>
+    <label for="email">Email</label><input type="text" name="email" value="" id="email"/>
+    <label for="password">Password</label><input type="password" name="password" value="" id="password"/>
+    <label for="repeat_password">Repeat password</label><input type="password" name="repeat_password" value="" id="repeat_password"/>
+    <label for="address_street">Address Street</label><input type="text" name="address_street" value="" id="address_street"/>
+    <label for="city">City</label><input type="text" name="city" value="" id="city"/>
+    <label for="state">State</label><input type="text" name="state" value="" id="state"/>
+    <label for="zip">Zip</label><input type="text" name="zip" value="" id="zip"/>
+    <p><input type="submit" value="Register"></p>
+  </form>
+</div>
