@@ -133,7 +133,12 @@ def checklist_edit():
 def checklist_new():
     checklist = DischargeChecklist()
     user_id = session.get('user_id')
-    return render_template('checklist_form', checklist=checklist, user_id=user_id)
+    drug_counter = range(1,5)
+    appointment_counter = range(1,3)
+    return render_template('checklist_form.html', checklist=checklist, 
+                user_id=user_id,
+                drug_counter=drug_counter,
+                appointment_counter=appointment_counter)
 
 ####HELPER METHODS
 

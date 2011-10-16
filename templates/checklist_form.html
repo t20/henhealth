@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block body %}
+
 <form action="checklist_form_submit" method="POST" accept-charset="utf-8">
   <div class="large_input">
     <label for="patient_name">Patient Name</label><input type="text" name="patient_name" value="" id="patient_name"/>
@@ -58,8 +62,7 @@
               <td width="168"><span class="style3">WHEN TO TAKE IT</span></td>
               <td width="178"><span class="style3">NOTES</span></td>
             </tr>
-            Add range(1 to 5) and duplicate the data
-            {% for count in  in 12345|make_list %}
+            {% for count in drug_counter %}
               <tr>
                 <td><input type="text" name="drug_name_{{count}}" value="" id="drug_name_{{count}}"/>
                 </td>
@@ -85,12 +88,13 @@
           <td width="278"><div align="center"><span class="style17">DATE</span></div></td>
           <td width="292"><div align="center"><span class="style17">PHONE NUMBER</span></div></td>
       </tr>
-      Cheat and duplicate here.
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
+      {% for count in appointment_counter %}
+        <tr>
+          <td><input type="text" name="appointment_{{count}}" value="" id="appointment_{{count}}"/></td>
+          <td><input type="text" name="appointment_date_{{count}}" value="" id="appointment_date_{{count}}"/></td>
+          <td><input type="text" name="appointment_phone_{{count}}" value="" id="appointment_phone_{{count}}"/></td>
+        </tr>
+      {% endfor %}
       </table>
   </div>
   
@@ -117,3 +121,5 @@
   </div>
   <p><input type="submit" value="Submit"></p>
 </form>
+
+{% endblock %}
