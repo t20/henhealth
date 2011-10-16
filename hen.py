@@ -63,10 +63,12 @@ def account():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html', 
+    user_id = session.get('user_id')
+    provider_id = 2
+    return render_template('patient_dashboard.html', 
                 medications=get_medication(user_id),
                 pdcs = get_discharge_checklists(user_id),
-                appointment=get_appointments(user_id),
+                appointment=get_appointments(user_id, provider_id),
                 providers=get_providers_with_access(user_id),
                 caregivers=get_caregivers_with_access(user_id)
                 )
@@ -144,7 +146,7 @@ def get_appointments(patient_id, provider_id):
 
 def get_medication(patient_id):
     """docstring for get_medication"""
-    medications = db_session.query(Medication). \
+    medications = db_session.query(Medication).join(DischargeChecklist). \
                         filter_by(patient_id=patient_id). \
                         all()
     return medications
@@ -157,18 +159,17 @@ def get_discharge_checklists(patient_id):
     return pdcs
 
 def get_providers_with_access(patient_id):
-    #TODO - Chnage model name
     providers = db_session.query(Viewer). \
                 filter_by(patient_id=patient_id). \
-                filter_by(provider_id != None). \
+                filter(Viewer.provider_id != None). \
                 all()
     return providers
 
 def get_caregivers_with_access(patient_id):
-    #TODO - Chnage model name
     caregivers = db_session.query(Viewer). \
                 filter_by(patient_id=patient_id). \
-                filter_by(caregiver_id != None).all()
+                filter(Viewer.caregiver_id != None). \
+                all()
     return caregivers
 
 def give_access(patient_id, caregiver_id=None, provider_id=None, commit=False):
