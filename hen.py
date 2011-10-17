@@ -127,6 +127,11 @@ def checklist_show():
     return render_template('checklist_show.html', checklist=checklist, edit=False)
 
 
+@app.route('/checklist/show')
+def checklist_show():
+    return render_template('pdc_checklist.html')
+
+
 @app.route('/checklist/edit/<checklist_id>')
 @login_required
 def checklist_edit():
