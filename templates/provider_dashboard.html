@@ -3,8 +3,8 @@
 {% block nav %}
  <div class="span6">
      <div style="text-align:center">
-             <h3>Provider Discharge Checklist:</h2>
-    <h1 style="margin:auto">Grandma May U. Olds</h1>
+        <h3>Patient Discharge Checklist</h2>
+    <h1 style="margin:auto">La Jolla Hostpital</h1>
     </div>
 </div>
 
@@ -18,156 +18,99 @@
 
 <!-- Example row of columns -->
 <div class="row">
-  <div class="span8">
+  <div class="span10">
      <div class="mini-layout">
         <div class="mini-layout-header">Medication</div>
-
-<table id="medication">
-    <thead>
-<tr>
-<th>Drug Name</th>
-<th>Dose</th>
-<th>When to take it</th>
-</tr>
-</thead>
-<tr>
-    <td>Prozac</td>
-    <td>2 pills</td>
-    <td>3 times a day</td>
-</tr>
-<tr>
-    <td>Flonase</td>
-    <td>1 pill</td>
-    <td>every morning</td>
-</tr>
-<tr>
-    <td>Lanoxin</td>
-    <td>1 pill</td>
-    <td>every morning</td>
-</tr>
-<tr>
-    <td>Humulinin N</td>
-    <td>2 pills</td>
-    <td>every morning &amp; eveving</td>
-</tr>
-<tr>
-    <td>Abilify </td>
-    <td>2 pills</td>
-    <td>every othr hour</td>
-</tr>
-
-
-</table>
-
-        <br/>
-        <br/>
-      </div>
-
-     <div class="mini-layout">
-        <div class="mini-layout-header">Next Appointment</div>
-
-<table id="medication">
-    <thead>
-<tr>
-<th>Date</th>
-<th>Time</th>
-<th>Location</th>
-</tr>
-</thead>
-<tr>
-    <td><h3>12/11/2011</h3></td>
-    <td><h3>10:00 AM</h3></td>
-    <td><address><strong>1257 La Jolla Dr.<br/> San Diego, CA 92037</strong></address></td>
-</tr>
-
-
-
-</table>
-
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-      </div>
-
-  </div>
-  
-  <div class="span8">
-
 <script >
   $(function() {
-    $("table#discharge-checklist").tablesorter({ sortList: [[0,1]] ,  headers: { 2:{sorter:false} } });
+    $("table#checklist").tablesorter({ sortList: [[0,1]] ,  headers: { 2:{sorter:false} } });
   });
 </script>
 
-     <div class="mini-layout">
-        <div class="mini-layout-header">Discharge Checklist</div>
 
-
-<table id="discharge-checklist">
+<table id="checklist">
     <thead>
 <tr>
-
-
-<th>Date</th>
-<th>Provider</th>
-<th></th>
-
-
-
+<th>ID</th>
+<th>Patient</th>
+<th>Add Patient Discharge Checklist</th>
 </tr>
-
 </thead>
+<tr><td>85754878748</td> <td>Sam Pigman</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>39393939393</td> <td>Brent Dishman</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>48498749827</td> <td>Dustin Sandler</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>20929294434</td> <td>Debora Eldredge</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>49587493875</td> <td>Jorge Goggin</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>20398402938</td> <td>Leola Araya</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>23749874782</td> <td>Petra Branco</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>23948719873</td> <td>Vernon Lovingood</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
 
-<tr class="current">
-<td>10/13/2011</td>
-<td>La Jolla Hospital </td>
-<td align="center"><a href=""><span class="action">see form</span></a></td>
-</tr>
-<tr>
-<td>08/03/2011</td>
-<td>Olive Branch Assisted </td>
-<td align="center"><a href=""><span class="action">see form</span></a></td>
-</tr>
+<!--
 
+<tr><td>98273498278</td> <td>Pedro Petterson</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>29384798627</td> <td>Rodas</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>23461897654</td> <td>Janine Dimattia</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>98734577548</td> <td>Zachary Lard</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>21987986246</td> <td>Fay Arambula</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>53849795877</td> <td>Helena Penaflor</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>59847987372</td> <td>Maurice Hower</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>79328479875</td> <td>Stefanie Lepore</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>59387985795</td> <td>Esperanza Stefanik</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>84987397877</td> <td>Leola Faw</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>38972672722</td> <td>Greg Hegg</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
+<tr><td>29292998484</td> <td>Jorge Fowlkes</td> <td><a href=""><span class="action">Add PDF</span></a></td></tr>
 
-
-<tr>
-<td>10/13/2011</td>
-<td>La Mesa Hospital </td>
-<td align="center"><a href=""><span class="action">see form</span></a></td>
-</tr>
-
-
+-->
 </table>
 
       </div>
 
-
-     <div class="mini-layout">
-        <div class="mini-layout-header">Caregivers</div>
-
       </div>
+      
+      
+      
 
+
+&nbsp;&nbsp;<button class="btn  large primary pull-right">Add New Patient</button>&nbsp;&nbsp;
+      
+      
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+<div class="span6 ">
+     <div class="mini-layout">
+        <div class="mini-layout-header">Profile</div>    
+
+    <table >
+    <tr>
+        <th>Name</th>
+        <td>Danny D. Uncle </td>
+    </tr>
+
+    <tr>
+        <th>ID</th>
+        <td>Danny D. Uncle </td>
+    </tr>
+
+
+    <tr>
+        <th>Location</th>
+        <td><address>1234 La Jolla Dr. San Diego, CA 92037</address></td>
+    </tr>
+
+    </table>
+
+&nbsp;&nbsp;<button class="btn  small">Edit</button>&nbsp;&nbsp;
+
+<br/>
+<br/>
+
+     </div>
 </div>
-
-<div class="span16">
-     <div class="mini-layout">
-        <div class="mini-layout-header">Personal Information</div>
-      </div>
-
- </div>
-
-
-<div class="span16">
-     <div class="mini-layout">
-        <div class="mini-layout-header">Users</div>
-      </div>
-
- </div>
-
 
 </div>
 
 
 {% endblock %}
+
