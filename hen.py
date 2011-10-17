@@ -20,6 +20,10 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+@app.before_request
+def before_request():
+    logged_in = session.get('user_id')
+
 #######ROUTING METHODS
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -34,6 +38,8 @@ def login():
             session['user_id'] = 2
             return redirect(url_for('provider_dashboard'))
     return render_template('login.html')
+
+
 
 
 @app.route('/logout')
@@ -135,10 +141,13 @@ def checklist_new():
     user_id = session.get('user_id')
     drug_counter = range(1,5)
     appointment_counter = range(1,3)
+    questions = db_session.query(Question).all()
     return render_template('checklist_form.html', checklist=checklist, 
                 user_id=user_id,
                 drug_counter=drug_counter,
-                appointment_counter=appointment_counter)
+                appointment_counter=appointment_counter,
+                questions=questions)
+
 
 ####HELPER METHODS
 
