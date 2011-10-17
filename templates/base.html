@@ -139,6 +139,9 @@
  </div>
 
 {% block nav %}
+
+  {% if logged_in %}
+
  <div class="span6">
      <div style="text-align:center">
              <h3>Patient Discharge Checklist:</h2>
@@ -146,14 +149,16 @@
     </div>
 </div>
 
-{% endblock %}
-
 
  <div class="span5">
         <form class="pull-right" action="/logout">
             <button class="btn" type="submit">Logout</button>
           </form>
  </div>
+   {% endif %}
+
+ {% endblock %}
+ 
 </div>
 
       <div class="content">
