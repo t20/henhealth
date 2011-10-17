@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <style type="text/css" media="screen">
+        .instructions{
+            align: left;
+        }
+        
+    </style>
+{% endblock %}
+
 {% block body %}
 
-<form action="checklist_form_submit" method="POST" accept-charset="utf-8">
+<form class="form-stacked" action="checklist_form_submit" method="POST" accept-charset="utf-8">
   <div class="large_input">
     <label for="patient_name">Patient Name</label><input type="text" name="patient_name" value="" id="patient_name"/>
     <label for="reason_for_admission">Reason For Admission</label><input type="text" name="reason_for_admission" value="" id="reason_for_admission"/>
@@ -32,7 +41,7 @@
       </tr>
       {% for question in questions %}
         <tr>
-          <td><input type="checkbox" name="question_{{ question.id }}" value="" id="question_{{ question.id }}"/></td>
+          <td><input class="questions" type="checkbox" name="question_{{ question.id }}" value="" id="question_{{ question.id }}"/></td>
           <td><p>{{ question.question_text }}</p></td>
           <td><textarea id="question_notes_{{ question.id }}"></textarea></td>
         </tr>
