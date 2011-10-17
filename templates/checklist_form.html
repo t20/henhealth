@@ -6,23 +6,59 @@
             align: left;
         }
         
+        .rowheader {
+          font-weight:bold;
+          font-size:16px;
+          background:#29B5CC;
+          color:#fff;
+        }
+        #action_items_wrapper textarea {
+          width:340px;
+        }
+       #inner_wrapper {
+         margin:10px 350px;
+       }
+       
+       .span5 img {
+         padding-left: 20px;
+       }
+        
     </style>
 {% endblock %}
+
+{% block nav %}
+ <div class="span6">
+     <div style="text-align:center">
+             <h3>Patient Discharge Checklist:</h2>
+    <h1 style="margin:auto">Grandma May</h1>
+    </div>
+</div>
+
+<div class="span5">
+        <form class="pull-right" action="/logout">
+            <button class="btn" type="submit">Logout</button>
+          </form>
+ </div>
+
+{% endblock %}
+
 
 {% block body %}
 
 <form class="form-stacked" action="checklist_form_submit" method="POST" accept-charset="utf-8">
-  <div class="large_input">
-    <label for="patient_name">Patient Name</label><input type="text" name="patient_name" value="" id="patient_name"/>
-    <label for="reason_for_admission">Reason For Admission</label><input type="text" name="reason_for_admission" value="" id="reason_for_admission"/>
+  <div id="patient_info_wrapper" class="mini-layout">
+    <div class="mini-layout-header">Patient Information</div>
+    <div id="inner_wrapper"><label for="patient_name">Patient Name</label><input type="text" name="patient_name" value="" id="patient_name"/>
+    <label for="reason_for_admission">Reason For Admission</label><input type="text" name="reason_for_admission" value="" id="reason_for_admission"/></div>
   </div>
   
   <p class="instructions">
     During your stay, your doctor and the staff will work with you to plan for your discharge. You and your caregiver are important members of the planning team. A caregiver is a family member or friend who may be helping you after discharge. Below is a checklist of important things you and your caregiver should know to prepare for discharge.
   </p>
   
-  <div id="instructions_wrapper">
-    <h3>Instructions</h3>
+  <div id="instructions_wrapper" class="mini-layout">
+    <div class="mini-layout-header">Instructions</div>
+    <h3></h3>
     <ul>
       <li class="instruction_item">Use the checklist early and often during your stay.</li>
       <li class="instruction_item">Talk to your doctor and the staff (for example, a discharge planner, social worker, or nurse) about the items on the checklist.</li>
@@ -32,9 +68,10 @@
     </ul>
   </div>
 
-  <div id="action_items_wrapper">
+  <div id="action_items_wrapper" class="mini-layout">
+    <div class="mini-layout-header">All Action Items</div>
     <table border="1" cellspacing="5" cellpadding="5">
-      <tr>
+      <tr class="rowheader">
         <td></td>
         <td width="500">Action Items</td>
         <td>Notes</td>
@@ -49,7 +86,8 @@
     </table>
   </div>
   
-  <div class="instructions">
+  <div class="instructions" class="mini-layout">
+    <div class="mini-layout-header">All Action Items</div>
     <p>If you need help choosing a home health agency or a nursing home, talk to the staff. Visit www.medicare.gov to compare the quality of nursing homes, home health agencies, dialysis facilities, and hospitals in your area. You can also call 1-800-MEDICARE (1-800-633-4227). TTY users should call 1-877-486-2048.</p>
   </div>
   
@@ -61,7 +99,8 @@
      <p>*This publication isn’t a legal document. The official Medicare Program legal guidance is contained in the relevant statutes, regulations, and rulings. The information in this publication was correct when it was printed. Call 1-800-MEDICARE, or visit www.medicare.gov to get the most current information.</p>
   </div>
   
-  <div id="drug_list_wrapper">
+  <div id="drug_list_wrapper" class="mini-layout">
+    <div class="mini-layout-header">Medications</div>
       <table width="960" border="1">
             <tr>
               <td width="172"><span class="style3" rip-style-bordercolor-backup="" style="" rip-style-borderstyle-backup="" rip-style-borderwidth-backup="">DRUG NAME</span></td>
@@ -86,12 +125,9 @@
       </table>
   </div>
   
-  <div id="appointment_wrapper">
+  <div id="appointment_wrapper" class="mini-layout">
+    <div class="mini-layout-header">Appointments:</div>
     <table width="960" border="0">
-      <tr>
-        <td bgcolor="#29b5cc"><span class="style10"><strong>My Appointments:</strong><br>
-        </span></td>
-      </tr>
       <tr>
           <td width="368"><div align="center"><span class="style17">APPOINTMENTS AND TESTS</span></div></td>
           <td width="278"><div align="center"><span class="style17">DATE</span></div></td>
